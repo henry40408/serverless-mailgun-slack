@@ -1,0 +1,17 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6.10.3
+    working_directory: ~/serverless-mailgun-slack
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-{{ checksum "yarn.lock" }}
+      - run: yarn
+      - save_cache:
+          key: yarn-{{ checksum "yarn.lock" }}
+          paths: [node_modules]
+      - run: yarn test

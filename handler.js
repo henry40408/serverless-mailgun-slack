@@ -1,16 +1,40 @@
 'use strict'
 
-module.exports.hello = (event, context, callback) => {
-  const response = {
+const { validate } = require('./lib/mailgun')
+const { sendSlackNotificaionAsync } = require('./lib/slack')
+const { parseFieldsAsync } = require('./lib/multipart')
+
+function ping (event, context, callback) {
+  return callback(null, {
     statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event
-    })
-  }
-
-  callback(null, response)
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
+    body: JSON.stringify({ message: 'pong' })
+  })
 }
+
+exports.ping = ping
+
+function mailgunCallback (event, context, callback) {
+  return parseFieldsAsync(event)
+    .then(fields => {
+      let { timestamp, token, signature } = fields
+      if (validate(timestamp, token, signature)) {
+        return fields
+      }
+      throw new Error('Signature does not match')
+    })
+    .then(fields => sendSlackNotificaionAsync(fields))
+    .then(() =>
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ message: 'OK' })
+      })
+    )
+    .catch(error =>
+      callback(null, {
+        statusCode: 500,
+        body: JSON.stringify({ error: error.message })
+      })
+    )
+}
+
+exports.mailgunCallback = mailgunCallback
