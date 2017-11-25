@@ -2,18 +2,12 @@
   "name": "serverless-mailgun-slack",
   "version": "0.0.0",
   "private": true,
-  "description": "Redirect e-mails to Slack via Mailgun",
+  "description": "Redirect e-mails to Slack via Mailgun Routes",
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "aws",
-    "lambda",
-    "mailgun",
-    "slack",
-    "serverless"
-  ],
+  "keywords": ["aws", "lambda", "mailgun", "slack", "serverless"],
   "author": "Heng-Yi Wu <@henry40408>",
   "dependencies": {
     "@slack/client": "^3.14.2",
