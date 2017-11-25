@@ -4,14 +4,17 @@ const { validate } = require('./lib/mailgun')
 const { sendSlackNotificaionAsync } = require('./lib/slack')
 const { parseFieldsAsync } = require('./lib/multipart')
 
-exports.ping = (event, context, callback) =>
-  callback(null, {
+function ping (event, context, callback) {
+  return callback(null, {
     statusCode: 200,
     body: JSON.stringify({ message: 'pong' })
   })
+}
 
-exports.callback = (event, context, callback) =>
-  parseFieldsAsync(event)
+exports.ping = ping
+
+function mailgunCallback (event, context, callback) {
+  return parseFieldsAsync(event)
     .then(fields => {
       let { timestamp, token, signature } = fields
       if (validate(timestamp, token, signature)) {
@@ -29,6 +32,9 @@ exports.callback = (event, context, callback) =>
     .catch(error =>
       callback(null, {
         statusCode: 500,
-        body: JSON.stringify({ error })
+        body: JSON.stringify({ error: error.message })
       })
     )
+}
+
+exports.mailgunCallback = mailgunCallback

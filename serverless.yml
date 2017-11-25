@@ -11,8 +11,8 @@ provider:
 
 functions:
   ping: {handler: handler.ping}
-  callback:
-    handler: handler.callback
+  mailgunCallback:
+    handler: handler.mailgunCallback
     events:
       - http:
           path: callback
