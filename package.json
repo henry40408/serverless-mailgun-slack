@@ -1,0 +1,23 @@
+{
+  "name": "serverless-mailgun-slack",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Redirect e-mails to Slack via Mailgun",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["aws", "lambda", "mailgun", "slack", "serverless"],
+  "author": "Heng-Yi Wu <@henry40408>",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "standard": "^10.0.3"
+  },
+  "license": "MIT"
+}
