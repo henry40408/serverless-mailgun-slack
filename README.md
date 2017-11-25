@@ -1,5 +1,11 @@
 # Serverless Mailgun Slack
 
+[![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+[![CircleCI](https://circleci.com/gh/henry40408/serverless-mailgun-slack.svg?style=shield)](https://circleci.com/gh/henry40408/serverless-mailgun-slack)
+[![codecov](https://codecov.io/gh/henry40408/serverless-mailgun-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/henry40408/serverless-mailgun-slack)
+[![GitHub release](https://img.shields.io/github/release/henry40408/serverless-mailgun-slack.svg)](https://github.com/henry40408/serverless-mailgun-slack)
+[![license](https://img.shields.io/github/license/henry40408/serverless-mailgun-slack.svg)](https://github.com/henry40408/serverless-mailgun-slack)
+
 > Redirect e-mails to Slack via Mailgun Routes
 
 ## Requirements
