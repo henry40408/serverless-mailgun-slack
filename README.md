@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/henry40408/serverless-mailgun-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/henry40408/serverless-mailgun-slack)
 [![GitHub release](https://img.shields.io/github/release/henry40408/serverless-mailgun-slack.svg)](https://github.com/henry40408/serverless-mailgun-slack)
 [![license](https://img.shields.io/github/license/henry40408/serverless-mailgun-slack.svg)](https://github.com/henry40408/serverless-mailgun-slack)
+![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
 
 > Redirect e-mails to Slack via Mailgun Routes
 
