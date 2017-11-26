@@ -51,9 +51,59 @@ $ edit secrets.yml
 
 ## Deploy
 
+We need to deploy first to get callback URL of Serverless application.
+
 ```bash
 $ yarn run sls deploy
 ```
+
+After the deployment, use `sls info` to get the callback URL.
+
+```bash
+$ yarn run sls info
+...
+Service Information
+...
+endpoints:
+  POST - https://xxxxxx.execute-api.ap-northeast-1.amazonaws.com/production/callback <-- you need this URL to configure Mailgun
+```
+
+## Configure Mailgun Routes
+
+### Test the callback URL
+
+1. Go to [Route: List](https://app.mailgun.com/app/routes) on Mailgun.
+2. Scroll to the bottom, we should see _Send A Sample POST_ form, type the
+   callback URL we got from `sls info` command above in _Endpoint_ field like
+   the following screenshot:
+
+![Send A Sample POST](assets/mailgun-test.png)
+
+3. Switch to Slack, we should see the notification like the following
+   screenshot:
+
+![Slack notification from Mailgun](assets/mailgun-test-slack.png)
+
+### Create new Route
+
+1. Go to [Route: List](https://app.mailgun.com/app/routes) on Mailgun.
+2. Click [Create Route](https://app.mailgun.com/app/routes/new) button on the
+   top of page.
+3. Then we should see the form like the following screenshot:
+
+![Mailgun Routes](http://blog.mailgun.com/content/images/2017/10/Create-Routes-in-Mailgun-Inbound-Emails.png)
+
+4. In _Expression Type_ field we select _Match Recipient_.
+5. In _Recipient_ field we type e-mail address we want to intercept by Mailgun
+   to redirect to Serverless application.
+6. In textarea below _Store and notify_, we type the URL we got from the above
+   `sls info` command.
+   * _Description_ field is optional, but it's recommended to type something to
+     remind us.
+7. Click _Create Route_ button and everything is good to go.
+
+For more details about Routes, please checkout
+[documentation](https://documentation.mailgun.com/en/latest/user_manual.html#routes).
 
 ## License
 
