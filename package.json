@@ -5,16 +5,10 @@
   "description": "Redirect e-mails to Slack via Mailgun Routes",
   "main": "handler.js",
   "scripts": {
-    "test": "standard && jest",
+    "test": "eslint lib handler.js && jest",
     "ci": "yarn test && yarn codecov"
   },
-  "keywords": [
-    "aws",
-    "lambda",
-    "mailgun",
-    "slack",
-    "serverless"
-  ],
+  "keywords": ["aws", "lambda", "mailgun", "slack", "serverless"],
   "author": "Heng-Yi Wu <@henry40408>",
   "dependencies": {
     "@slack/client": "^3.14.2",
@@ -31,8 +25,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "form-data": "^2.3.1",
     "jest": "^21.2.1",
-    "nock": "^9.1.2",
-    "standard": "^10.0.3"
+    "nock": "^9.1.2"
   },
   "license": "MIT",
   "jest": {
